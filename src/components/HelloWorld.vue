@@ -3,6 +3,7 @@
     <h1>Benjamin Bordelet</h1>
     <h1>&</h1>
     <h1>Ismael Miguelez</h1>
+    <img src="https://picsum.photos/500">
     
   </div>
 </template>
