@@ -26,8 +26,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      - name: Firebase init
+        uses: lowply/deploy-firebase@v0.0.5
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+          FIREBASE_PROJECT: deploy-app
         
-      - name: Vue
+        
+      - name: npm install
         run: npm install
         
       - name: npm build
@@ -35,9 +41,7 @@ jobs:
         
         
       - name: Deploy to Firebase
-        # You may pin to the exact commit or the version.
-        # uses: lowply/deploy-firebase@2d5ea962add04eb6fe1c17dd1dafffc806bdfe8a
-        uses: lowply/deploy-firebase@v0.0.5
+
         
       - name : fb deploy
         run: firebase deploy
