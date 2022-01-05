@@ -1,12 +1,26 @@
-- name: Create Release
-          id: create_release
-          uses: actions/create-release@latest
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            tag_name: ${{ github.ref }}
-            release_name: Release ${{ github.ref }}
-            body: |
-              ${{ steps.Changelog.outputs.changelog }}
-            draft: false
-            prerelease: false
+name: Create Release before production
+on: 
+  pull_request:
+    branches: [ master ]
+    
+  workflow_dispatch:
+    
+jobs:
+  build:
+  
+    name: create relase
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/create-release@latest
+      
+      - name: create_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ${{ steps.Changelog.outputs.changelog }}
+          draft: false
+          prerelease: false
