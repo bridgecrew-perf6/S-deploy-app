@@ -18,21 +18,17 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    name: Build & deploy
+    name: Build
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
-      - uses: actions/checkout@v2
-
-      # Runs a single command using the runners shell
+        uses: actions/checkout@v2
+        
       - name: ESLint
         run: npm run lint
-
-      # Runs a set of commands using the runners shell
-      - name: Build deploy
-        run: |
-          npm run build
-          firebase deploy
+      - name: npm build
+        run: npm run build
+      - name : fb deploy
+        run: firebase deploy
