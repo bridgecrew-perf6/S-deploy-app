@@ -26,6 +26,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
         
+      - name: Vue
+        run: npm install @vue/cli
+        
       - name: npm build
         run: npm run build
       - name : fb deploy
